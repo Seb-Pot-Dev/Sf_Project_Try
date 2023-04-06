@@ -5,7 +5,7 @@
 {% block body %}
 
     {%for entreprise in entreprises %}
-        {{ entreprise.raisonSociale  ~ ' (' ~ entreprise.ville ~ ' ' ~ entreprise.cp ~ ')'}} <br>
+        {{ entreprise }} <br>
     {% endfor %}
     
 {% endblock %}

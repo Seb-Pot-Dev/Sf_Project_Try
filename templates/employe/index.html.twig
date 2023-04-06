@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <h1>Hello {{ controller_name }}! ✅</h1>
+   {{ 'liste des employes' }} <br>
 
-    {%for element in tableau %}
-        {{element<br>}}
-    {%endfor%}
+    {%for employe in employes %}
+        {{ employe }} <br>
+    {% endfor %}
 {% endblock %}
