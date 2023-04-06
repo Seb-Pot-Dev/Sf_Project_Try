@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    {%for element in tableau %}
+        {{element<br>}}
+    {%endfor%}
+{% endblock %}
