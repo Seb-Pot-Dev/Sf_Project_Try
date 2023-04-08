@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un employé{% endblock %}
+
+{% block body %}
+
+<a href="{{ path('app_employe') }}">Retour a la liste des employés</a><br>
+   <h1>Détails de {{ employe }}</h1>
+
+    <p> 
+        Ville de résidence: {{ employe.ville|upper}}<br>
+        Entreprise: {{ employe.entreprise }}<br>
+        Date d'embauche: {{ employe.dateEmbauche|date("m/d/Y")}}<br>
+        Date de naissance : {{ employe.dateNaissance|date("m/d/Y")}}<br>
+        Age : {{ employe.age }} ans <br>
+    </p>
+{% endblock %}

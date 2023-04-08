@@ -3,9 +3,8 @@
 {% block title %}Hello EntrepriseController!{% endblock %}
 
 {% block body %}
-
     {%for entreprise in entreprises %}
-        {{ entreprise }} <br>
+        <a href="{{ path('show_entreprise', {'id':entreprise.id})}}">{{entreprise}}</a> <br>
     {% endfor %}
     
 {% endblock %}

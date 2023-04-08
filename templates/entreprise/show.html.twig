@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'une entreprise{% endblock %}
+
+{% block body %}
+
+<a href="{{ path('app_entreprise') }}">Retour a la liste des entreprises</a><br>
+   <h1>Détails de {{ entreprise }}</h1>
+
+    <p> 
+        Raison sociale : {{ entreprise.raisonSociale}}<br>
+        Date de création : {{ entreprise.dateCreation|date('d/m/Y')}}
+    </p>
+{% endblock %}
