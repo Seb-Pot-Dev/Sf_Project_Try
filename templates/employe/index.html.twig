@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello EmployeController!{% endblock %}
+
 {% block body %}
+<a href="{{ path('add_employe') }}">Ajouter un employé</a>
 <h1> Liste des employés </h1>
     {%for employe in employes %}
         <a href="{{ path('show_employe', {'id':employe.id}) }}">{{ employe }} </a><br>

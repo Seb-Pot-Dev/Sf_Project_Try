@@ -9,6 +9,22 @@
 
     <p> 
         Raison sociale : {{ entreprise.raisonSociale}}<br>
-        Date de création : {{ entreprise.dateCreation|date('d/m/Y')}}
+        Date de création : {{ entreprise.dateCreation|date('d/m/Y')}}<br>
+        Ancienneté de l'entreprise : {{ entreprise.age }} ans.<br>
+        Siret : {{ entreprise.siret }}
     </p>
+    <h2>Liste des salariés de l'entreprise</h2>
+
+    {% if entreprise.employes | length == 0 %}
+
+        <p>Pas d'employés dans cette entreprise</p>
+
+    {% else %}
+
+        {% for employe in entreprise.employes %}
+            <a href="{{path('show_employe', {'id':employe.id}) }}"> {{ employe }}</a><br>
+        {% endfor %}
+
+    {% endif %}
+
 {% endblock %}
