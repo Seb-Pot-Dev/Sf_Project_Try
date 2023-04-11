@@ -3,8 +3,36 @@
 {% block title %}Ajouter un employé{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un employé</h1>
-        
-{{ form (formAddEmploye)}}
+    {% if edit %}
+        <h1>Editer un employé</h1>
+
+    {% else %}
+        <h1>Ajouter un employé</h1>
+
+    {% endif %}
+
+    {{ form_start(formAddEmploye) }}
+
+        {{ form_errors(formAddEmploye) }}
+    <div class="nomPrenom">
+        {{ form_row(formAddEmploye.nom) }}
+        {{ form_row(formAddEmploye.prenom) }}
+    </div>
+    <div class="dates">
+        {{ form_row(formAddEmploye.dateNaissance) }}
+        {{ form_row(formAddEmploye.dateEmbauche) }}
+    </div>
+    <div class="ville">
+        {{ form_row(formAddEmploye.ville) }}
+    </div>
+    <div class="entreprise">
+        {{ form_row(formAddEmploye.entreprise) }}
+    </div>
+    <div class="submit">
+        {{ form_row(formAddEmploye.submit) }}
+    </div>
+    {{ form_end(formAddEmploye) }}
+
+
     
 {% endblock %}

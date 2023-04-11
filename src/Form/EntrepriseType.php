@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Entreprise;
+use App\Entity\Employe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +18,9 @@ class EntrepriseType extends AbstractType
     {
         $builder
             ->add('raisonSociale', TextType::class)
-            ->add('dateCreation', DateType::class)
+            ->add('dateCreation', DateType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('adresse', TextType::class)
             ->add('cp', TextType::class)
             ->add('ville', TextType::class)

@@ -25,8 +25,14 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/entreprise/add", name="add_entreprise")
+     * @Route("/entreprise/{id}/edit", name="edit_entreprise")
      */ 
     public function add(ManagerRegistry $doctrine, Entreprise $entreprise = null, Request $request): Response { // $doctrine pour dire qu'on va intéragir avec la bdd, $entreprise pour dire quel type d'elmt on ajoute,
+
+        if(!$entreprise) {
+            $entreprise = new Entreprise();
+        }
+
         //on créé le formulaire 
         $form = $this->createForm(EntrepriseType::class, $entreprise);
         //on gère les données ajoutées au formulaire
@@ -34,16 +40,30 @@ class EntrepriseController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) { // on vérifie que les données ont étés soumises et sont valide = ont passés les filtres.
             $entreprise = $form->getData(); // permet d'hydrater l'objet entreprise défini au départ
+
             $entityManager = $doctrine->getManager(); // permet d'accéder au Manager de doctrine qui possède les fonctions "persiste()" et "flush()"
+
             $entityManager->persist($entreprise); // equivalent de 'prepare' en pdo
             $entityManager->flush(); // equivalent de execute -> on tire la chasse d'eau
 
             return $this->redirectToRoute('app_entreprise'); // redirection vers la liste des entreprises
         }
-
+        // vue pour afficher le formulaire d'ajout
         return $this->render('Entreprise/add.html.twig', [
-            'formAddEntreprise' => $form->createView()
+            'formAddEntreprise' => $form->createView(),
+            'edit' => $entreprise->getId()
         ]);
+    }
+
+    /**
+     * @Route("/entreprise/{id}/delete", name="delete_entreprise")
+     */
+    public function delete(ManagerRegistry $doctrine, Entreprise $entreprise) {
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($entreprise);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_entreprise');
     }
 
     // La fonction permettant d'afficher le détail se met a la fin par bonne pratique ->

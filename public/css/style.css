@@ -4,3 +4,39 @@ h1 {
 h2 {
     color : grey;
 }
+.nomPrenom {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: lightcoral;
+    padding: 20px;
+}
+.submit {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: lightblue;
+    padding: 20px;
+}
+.ville {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: lightgreen;
+    padding: 20px;
+}
+.dates {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: lightseagreen;
+    padding: 20px;
+}
+.entreprise {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+}
